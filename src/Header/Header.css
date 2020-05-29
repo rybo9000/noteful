@@ -1,0 +1,12 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+}
+
+header a:link,
+a:visited {
+  text-decoration: none;
+  color: black;
+}

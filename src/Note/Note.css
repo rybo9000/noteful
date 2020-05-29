@@ -1,0 +1,22 @@
+.Note {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  border: 2px solid black;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 5px;
+  max-width: 500px;
+}
+
+.NoteLink {
+  text-decoration: none;
+  color: black;
+}
+
+.noteBottom {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+}
