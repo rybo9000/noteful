@@ -32,6 +32,7 @@ function DynamicNoteNav(props) {
     <ul className="UlNav">
       {nav}
       <GoBack />
+      Test
     </ul>
   );
 }
