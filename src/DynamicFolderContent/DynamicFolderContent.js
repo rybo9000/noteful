@@ -3,31 +3,37 @@ import { withRouter } from "react-router-dom";
 
 import Note from "../Note/Note";
 import AddButton from "../AddButton/AddButton";
+
+import NotefulContext from "../NotefulContext";
 import "./DynamicFolderContent.css";
 
 function DynamicFolderContent(props) {
-  const notes = props.notes.map((note) => {
-    if (props.match.params.folderid === note.folderId) {
-      return (
-        <Note
-          name={note.name}
-          modified={note.modified}
-          key={note.id}
-          id={note.id}
-        />
-      );
-    }
-  });
   return (
-    <>
-      {notes}
-      <AddButton thing="Note" />
-    </>
+    <NotefulContext.Consumer>
+      {(value) => {
+        const notes = value.notes.map((note) => {
+          if (props.match.params.folderid === note.folderId) {
+            return (
+              <Note
+                name={note.name}
+                modified={note.modified}
+                key={note.id}
+                id={note.id}
+                handleDelete={value.handleDelete}
+              />
+            );
+          }
+        });
+
+        return (
+          <>
+            {notes}
+            <AddButton thing="Note" />
+          </>
+        );
+      }}
+    </NotefulContext.Consumer>
   );
 }
-
-DynamicFolderContent.defaultProps = {
-  notes: [],
-};
 
 export default withRouter(DynamicFolderContent);

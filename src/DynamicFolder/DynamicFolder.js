@@ -11,10 +11,10 @@ function DynamicFolder(props) {
       <Header />
       <div className="wrapper">
         <nav>
-          <DynamicFolderNav folders={props.folders} />
+          <DynamicFolderNav />
         </nav>
         <main>
-          <DynamicFolderContent notes={props.notes} />
+          <DynamicFolderContent />
         </main>
       </div>
     </>

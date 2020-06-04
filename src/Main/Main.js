@@ -12,10 +12,10 @@ function Main(props) {
       <Header />
       <div className="wrapper">
         <nav>
-          <MainNav folders={props.folders} />
+          <MainNav />
         </nav>
         <main>
-          <MainContent notes={props.notes} />
+          <MainContent />
           <AddButton thing="Note" />
         </main>
       </div>

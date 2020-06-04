@@ -11,10 +11,10 @@ function DynamicNote(props) {
       <Header />
       <div className="wrapper">
         <nav>
-          <DynamicNoteNav folders={props.folders} notes={props.notes} />
+          <DynamicNoteNav />
         </nav>
         <main>
-          <DynamicNoteContent notes={props.notes} />
+          <DynamicNoteContent />
         </main>
       </div>
     </>

@@ -6,15 +6,17 @@ function Note(props) {
   const link = `/note/${props.id}`;
 
   return (
-    <Link to={link} className="NoteLink">
-      <div className="Note">
+    <div className="Note">
+      <Link to={link} className="NoteLink">
         <h3>{props.name}</h3>
-        <div className="noteBottom">
-          <span>{props.modified}</span>
-          <button>Delete Note</button>
-        </div>
+      </Link>
+      <div className="noteBottom">
+        <span>{props.modified}</span>
+        <button onClick={(e) => props.handleDelete(props.id)}>
+          Delete Note
+        </button>
       </div>
-    </Link>
+    </div>
   );
 }
 
