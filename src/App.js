@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 
 import Main from "./Main/Main";
 import DynamicFolder from "./DynamicFolder/DynamicFolder";
@@ -18,6 +18,7 @@ class App extends React.Component {
     };
   }
 
+  // FETCH ALL NOTE AND FOLDER DATA FROM THE SERVER
   fetchData = () => {
     // GET FOLDERS
     fetch("http://localhost:9090/folders")
@@ -64,8 +65,32 @@ class App extends React.Component {
     this.fetchData();
   }
 
+  // WHEN THE DELETE BUTTON IS PRESSED ON A NOTE COMPONENT
   handleDelete = (id) => {
-    console.log("delete " + id);
+    const options = {
+      method: "DELETE",
+    };
+
+    fetch(`http://localhost:9090/notes/${id}`, options)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Something went wrong");
+        }
+        return response;
+      })
+      .then((response) => {
+        this.props.history.push("/");
+
+        const notes = this.state.notes.filter((note) => note.id !== id);
+        this.setState({
+          notes,
+        });
+      })
+      .catch((err) => {
+        this.setState({
+          error: err,
+        });
+      });
   };
 
   render() {
@@ -116,4 +141,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
