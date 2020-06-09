@@ -138,6 +138,56 @@ class App extends React.Component {
       });
   };
 
+  // ADD A NOTE
+  handleAddNote = (e) => {
+    e.preventDefault();
+
+    // GENERATE RANDOM NUMBER FOR FOLDER ID VALUE
+    const randomId = Math.ceil(Math.random() * 9999999999999).toString();
+
+    // GENERATE DATE TIME OBJECT AND ASSIGN TO VARIABLE
+    const modified = new Date();
+
+    // BUILD OBJECT TO POST
+    const noteObject = {
+      folderId: e.target.folderSelect.value,
+      content: e.target.noteContent.value,
+      id: randomId,
+      modified: modified,
+      name: e.target.noteName.value,
+    };
+
+    // OPTION FOR FETCH
+    const options = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(noteObject),
+    };
+
+    fetch("http://localhost:9090/notes", options)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Something Went Wrong!");
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .then((response) => {
+        this.props.history.push("/");
+        const notes = [...this.state.notes, response];
+        this.setState({
+          notes,
+        });
+      })
+      .catch((err) => {
+        this.setState({
+          error: err,
+        });
+      });
+  };
+
   render() {
     const contextValue = {
       folders: this.state.folders,
@@ -145,6 +195,7 @@ class App extends React.Component {
       handleDelete: this.handleDelete,
       fetchData: this.fetchData,
       handleAddFolder: this.handleAddFolder,
+      handleAddNote: this.handleAddNote,
     };
 
     return (

@@ -18,6 +18,14 @@ select {
   margin: 10px 0;
 }
 
+.AddNoteForm textarea {
+  font-size: 1rem;
+  padding: 10px;
+  margin: 10px 0;
+  width: 500px;
+  height: 300px;
+}
+
 .AddNoteForm button {
   font-size: 2rem;
   padding: 10px;
