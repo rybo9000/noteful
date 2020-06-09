@@ -4,6 +4,8 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import Main from "./Main/Main";
 import DynamicFolder from "./DynamicFolder/DynamicFolder";
 import DynamicNote from "./DynamicNote/DynamicNote";
+import AddFolder from "./AddFolder/AddFolder";
+import AddNote from "./AddNote/AddNote";
 
 import NotefulContext from "./NotefulContext";
 import "./App.css";
@@ -93,47 +95,67 @@ class App extends React.Component {
       });
   };
 
+  // ADD A FOLDER
+  handleAddFolder = (e) => {
+    e.preventDefault();
+    // GENERATE RANDOM NUMBER FOR FOLDER ID VALUE
+    const randomId = Math.ceil(Math.random() * 9999999999999).toString();
+
+    // BUILD FOLDER OBJECT TO POST TO API SERVER
+    const folderObject = {
+      id: randomId,
+      name: e.target.folderName.value,
+    };
+
+    const options = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(folderObject),
+    };
+
+    // FETCH REQUEST
+    fetch(`http://localhost:9090/folders`, options)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Something went wrong!");
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .then((response) => {
+        this.props.history.push("/");
+        const folders = [...this.state.folders, response];
+        this.setState({
+          folders,
+        });
+      })
+      .catch((err) => {
+        this.setState({
+          error: err,
+        });
+      });
+  };
+
   render() {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
       handleDelete: this.handleDelete,
       fetchData: this.fetchData,
+      handleAddFolder: this.handleAddFolder,
     };
 
     return (
       <NotefulContext.Provider value={contextValue}>
         <div className="App">
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <Main folders={this.state.folders} notes={this.state.notes} />
-              )}
-            />
-            <Route
-              path="/folder/:folderid"
-              render={() => {
-                return (
-                  <DynamicFolder
-                    folders={this.state.folders}
-                    notes={this.state.notes}
-                  />
-                );
-              }}
-            />
-            <Route
-              path="/note/:noteid"
-              render={() => {
-                return (
-                  <DynamicNote
-                    folders={this.state.folders}
-                    notes={this.state.notes}
-                  />
-                );
-              }}
-            />
+            <Route exact path="/" component={Main} />
+            <Route path="/folder/:folderid" component={DynamicFolder} />
+            <Route path="/note/:noteid" component={DynamicNote} />
+            <Route path="/addfolder" component={AddFolder} />
+            <Route path="/addnote" component={AddNote} />
           </Switch>
         </div>
       </NotefulContext.Provider>

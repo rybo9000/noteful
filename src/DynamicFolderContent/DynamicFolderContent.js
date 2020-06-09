@@ -28,7 +28,7 @@ function DynamicFolderContent(props) {
         return (
           <>
             {notes}
-            <AddButton thing="Note" />
+            <AddButton thing="Note" place="addnote" />
           </>
         );
       }}

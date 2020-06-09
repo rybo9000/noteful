@@ -17,7 +17,7 @@ function MainNav() {
         return (
           <>
             <ul className="UlNav">{nav}</ul>
-            <AddButton thing="Folder" />
+            <AddButton thing="Folder" place="addfolder" />
           </>
         );
       }}

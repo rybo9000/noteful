@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
-import MainNav from "./MainNav";
+import AddFolderContent from "./AddFolderContent";
 
-describe("Nav Component", () => {
+describe("AddFolderContent Component", () => {
   it("Renders Without Crashing", () => {
     const div = document.createElement("div");
     ReactDOM.render(
       <BrowserRouter>
-        <MainNav />
+        <AddFolderContent />
       </BrowserRouter>,
       div
     );

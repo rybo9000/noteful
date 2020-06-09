@@ -30,7 +30,7 @@ function DynamicFolderNav(props) {
         return (
           <>
             <ul className="UlNav">{nav}</ul>
-            <AddButton thing={"Folder"} />
+            <AddButton thing={"Folder"} place={"addfolder"} />
           </>
         );
       }}

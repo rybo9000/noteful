@@ -2,11 +2,11 @@ import React from "react";
 
 import Header from "../Header/Header";
 import MainNav from "../MainNav/MainNav";
-import MainContent from "../MainContent/MainContent";
-import AddButton from "../AddButton/AddButton";
-import "./Main.css";
+import AddNoteContent from "../AddNoteContent/AddNoteContent";
 
-function Main(props) {
+import "./AddNote.css";
+
+function AddNote(props) {
   return (
     <>
       <Header />
@@ -15,12 +15,11 @@ function Main(props) {
           <MainNav />
         </nav>
         <main>
-          <MainContent />
-          <AddButton thing="Note" place="addnote" />
+          <AddNoteContent />
         </main>
       </div>
     </>
   );
 }
 
-export default Main;
+export default AddNote;

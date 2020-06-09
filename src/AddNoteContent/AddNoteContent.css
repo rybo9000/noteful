@@ -1,0 +1,25 @@
+.AddNoteForm {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  max-width: 500px;
+  padding: 10px;
+}
+
+.AddNoteForm label {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.AddNoteForm input,
+select {
+  font-size: 2rem;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.AddNoteForm button {
+  font-size: 2rem;
+  padding: 10px;
+  margin: 10px 0;
+}
