@@ -6,7 +6,7 @@ import AddFolderContent from "../AddFolderContent/AddFolderContent";
 
 import "./AddFolder.css";
 
-function AddFolder(props) {
+function AddFolder() {
   return (
     <>
       <Header />

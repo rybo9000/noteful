@@ -5,7 +5,7 @@ import DynamicFolderNav from "../DynamicFolderNav/DynamicFolderNav";
 import DynamicFolderContent from "../DynamicFolderContent/DynamicFolderContent";
 import "./DynamicFolder.css";
 
-function DynamicFolder(props) {
+function DynamicFolder() {
   return (
     <>
       <Header />

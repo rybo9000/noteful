@@ -6,7 +6,7 @@ import AddNoteContent from "../AddNoteContent/AddNoteContent";
 
 import "./AddNote.css";
 
-function AddNote(props) {
+function AddNote() {
   return (
     <>
       <Header />

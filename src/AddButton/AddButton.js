@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
 import "./AddButton.css";
@@ -15,5 +16,10 @@ function AddButton(props) {
     </button>
   );
 }
+
+// DEFINE PROPTYPES
+AddButton.propTypes = {
+  place: PropTypes.string.isRequired,
+};
 
 export default withRouter(AddButton);

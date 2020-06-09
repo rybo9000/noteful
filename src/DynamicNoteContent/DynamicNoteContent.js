@@ -33,8 +33,4 @@ function DynamicNoteContent(props) {
   );
 }
 
-DynamicNoteContent.defaultProps = {
-  notes: [],
-};
-
 export default withRouter(DynamicNoteContent);

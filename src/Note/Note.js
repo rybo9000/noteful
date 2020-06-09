@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import "./Note.css";
 
 function Note(props) {
@@ -19,5 +21,11 @@ function Note(props) {
     </div>
   );
 }
+
+Note.propTypes = {
+  id: PropTypes.string.isRequired,
+  modified: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default Note;

@@ -38,8 +38,4 @@ function DynamicFolderNav(props) {
   );
 }
 
-DynamicFolderNav.defaultProps = {
-  folders: [],
-};
-
 export default withRouter(DynamicFolderNav);
